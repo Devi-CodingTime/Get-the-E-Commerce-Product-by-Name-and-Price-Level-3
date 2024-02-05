@@ -14,15 +14,15 @@ app.use('/api/v1/products/:name/:price',(req,res)=>{
 
     let {name,price} = req.params;
     price = price*1;
-    const availableProduct = products.find(val => {return val.name == name && val.price == price})
+    const availableProduct = products.find(val => {return val.name === name && val.price === price})
     if(!availableProduct){
-        return res.status(404).json({
+        return res.status(404).send({
             message: 'Product not found!',
             status: 'failed',
             
         })
     }
-    return res.status(200).json({
+    return res.status(200).send({
         status: 'success',
         message: 'Product fetched successfully',
         data:{availableProduct}
