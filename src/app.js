@@ -12,7 +12,7 @@ app.use(express.json());
 // Endpoint - /api/v1/products/:name/:price
 app.use('/api/v1/products/:name/:price',(req,res)=>{
 
-    const {name,price} = req.params;
+    let {name,price} = req.params;
     price = price*1;
     const availableProduct = products.find(val => {return val.name == name && val.price == price})
     if(!availableProduct){
